@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include "md5.h"
-#include "12net.h"
+#include "amtnet.h"
 #define PORT 3848 /* Server Port */
 
 static char *program_mod;
