@@ -14,12 +14,12 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
  */
  
-extern void amtnet(int, char **);
+extern void aecium(int, char **);
 
 int main(int argc, char **argv)
 {
 
-	amtnet(argc, argv);	
-	
+	aecium(argc, argv);	
+
 	return 0;
 }
