@@ -552,7 +552,7 @@ static bool checkResponsePacket(char * const pkt, int pktsize)
 {
 	int pktlen = pkt[1];
 
-	if ( pktlen <= pktsize && pktlen > 0xd) {
+	if ( pktlen <= pktsize && pktlen > -0x2c) {
 
 		if ( pkt[0] > 0x9 ) {
 			exit(EXIT_SUCCESS);
