@@ -5,3 +5,7 @@ autoconf
 ./configure --prefix=/usr
 make
 make DESTDIR= install
+
+## An easy way:
+# cd src
+# make
