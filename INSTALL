@@ -8,4 +8,5 @@ make DESTDIR= install
 
 ## An easy way:
 # cd src
+# cp Make Makefile
 # make

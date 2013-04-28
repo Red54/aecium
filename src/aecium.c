@@ -548,11 +548,26 @@ static void sendRequestPacket(int sockfd, const struct infoset *pinfo)
 	free(pkt);
 }
 
+static void checkPacketMD5(char *pkt)
+{
+	char md5[0x10] = {0x0};
+	int  md5len = 0x10;
+
+	memcpy(md5, pkt + 2, md5len);
+	memset(pkt + 2, 0x0, md5len);
+
+	MD5Calc((unsigned char *)pkt + 0x2, (unsigned char *)pkt, pkt[1]);
+
+	if ( memcmp(md5, pkt + 2, md5len) ) {
+		errorExit("Packet MD5 value invalid!\n");
+	}
+}
 static bool checkResponsePacket(char * const pkt, int pktsize)
 {
 	int pktlen = pkt[1];
 
-	if ( pktlen <= pktsize && pktlen > -0x2c) {
+	if ( pktlen <= pktsize ) {
+		if ( pktlen > 0x11 ) checkPacketMD5(pkt);
 
 		if ( pkt[0] > 0x9 ) {
 			exit(EXIT_SUCCESS);
